@@ -26,71 +26,24 @@ const DynamicForm = ({ schema }: { schema: Schema }) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    //Find all the password fields
-    const passwordFields = schema.fields.filter(
-      (field) => field.type === 'password'
-    );
+    //executes this if there are no two passwords
+    toast.success('Form submitted successfully!!', {
+      position: 'top-right',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
 
-    //if there are exactly two password fields implement password check
-    if (passwordFields.length === 2) {
-      const password1 = formData[passwordFields[0].name];
-      const password2 = formData[passwordFields[1].name];
+      theme: 'light',
+    });
 
-      if (password1 !== password2) {
-        toast.error('Passwords do not match!', {
-          position: 'top-right',
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          theme: 'light',
-        });
-        return;
-      }
-
-      //if password matches then removing the second confirm password field from being submitted
-      const { [passwordFields[1].name]: _, ...filteredFormData } = formData;
-
-      //success notification
-      toast.success('Form submitted successfully!!', {
-        position: 'top-right',
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-
-        theme: 'light',
+    setTimeout(() => {
+      navigate('/submitted-data', {
+        state: { formData: JSON.stringify(formData) },
       });
-
-      //time delay so we can see success notification
-      setTimeout(() => {
-        navigate('/submitted-data', {
-          state: { formData: JSON.stringify(filteredFormData) },
-        });
-        setFormData(initailFormData);
-      }, 1000);
-    } else {
-      //executes this if there are no two passwords
-      toast.success('Form submitted successfully!!', {
-        position: 'top-right',
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-
-        theme: 'light',
-      });
-
-      setTimeout(() => {
-        navigate('/submitted-data', {
-          state: { formData: JSON.stringify(formData) },
-        });
-        setFormData(initailFormData);
-      }, 1000);
-    }
+      setFormData(initailFormData);
+    }, 1000);
   };
 
   return (
