@@ -15,7 +15,6 @@
   This is a react app that allows users to setup the form fields based upon the schema only. The users dont have to hard code at the form section, instead they can just add the required fields on schema and it would render automatically. 
 
 ## Features
-- Users can add password fields
 - contact fields
 - options fields
 - test fields
