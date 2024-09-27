@@ -39,6 +39,23 @@ const DynamicForm = ({ schema }: { schema: Schema }) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
+    // Check if the checkbox is checked
+    if (!formData.terms) {
+      toast.error(
+        'You must agree to the terms and conditions before submitting the form.',
+        {
+          position: 'top-right',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          theme: 'light',
+        }
+      );
+      return; // Prevent form submission
+    }
+
     //executes this if there are no two passwords
     toast.success('Form submitted successfully!!', {
       position: 'top-right',
@@ -60,7 +77,7 @@ const DynamicForm = ({ schema }: { schema: Schema }) => {
   };
 
   return (
-    <div className='flex justify-center items-center min-h-screen'>
+    <div className='flex justify-center items-center'>
       <div className='bg-gray-200 shadow-md rounded-lg px-8 pt-6 pb-8 mb-4 max-w-lg w-full'>
         <h1 className='text-2xl text-center font-bold mb-4 text-slate-500'>
           Dynamic Form
