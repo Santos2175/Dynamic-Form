@@ -6,7 +6,7 @@ import SubmittedData from './components/Form/SubmittedData.tsx';
 
 function App() {
   return (
-    <div className='container mx-auto p-4 mt-4'>
+    <div className='container mx-auto p-8 bg-slate-300'>
       <Router>
         <Routes>
           <Route path='/' element={<DynamicForm schema={formSchema} />} />

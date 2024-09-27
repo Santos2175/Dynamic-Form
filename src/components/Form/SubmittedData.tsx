@@ -4,9 +4,12 @@ import { useNavigate } from 'react-router-dom';
 const SubmittedData = () => {
   const navigate = useNavigate();
   const location = useLocation();
+
+  // Extracts the formData
   const formData = location.state?.formData
     ? JSON.parse(location.state.formData)
     : {};
+
   return (
     <div className='p-4'>
       <button
