@@ -15,8 +15,8 @@ export const formSchema: Schema = {
     { label: 'Full Name', name: 'fullName', type: 'text' },
     { label: 'Email', name: 'email', type: 'email' },
     { label: 'Contact No.', name: 'contact', type: 'tel' },
-    { label: 'Password', name: 'password', type: 'password' },
-    { label: 'Confirm Password', name: 'confirmPassword', type: 'password' },
+    { label: 'Enter Date', name: 'date', type: 'date' },
+    { label: 'Upload File', name: 'file', type: 'file' },
 
     {
       label: 'Gender',
