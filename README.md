@@ -1,50 +1,62 @@
-# React + TypeScript + Vite
+# Dynamic Form [Live Demo](https://dynamic-form-azure.vercel.app/)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Table of Contents
+- [Introduction](#introduction)
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Prerequisites](#prerequisites)
+- [Getting Started](#getting-started)
+  - [Installation](#installation)
+  - [Running the Project](#running-the-project)
+- [Contact](#contact)
 
-Currently, two official plugins are available:
+## Introduction
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+  This is a react app that allows users to setup the form fields based upon the schema only. The users dont have to hard code at the form section, instead they can just add the required fields on schema and it would render automatically. 
 
-## Expanding the ESLint configuration
+## Features
+- Users can add password fields
+- contact fields
+- options fields
+- test fields
+- email
+  
+***Note*** - radio, textarea, checkbox, color fields are yet to be implemented
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Technologies Used
+### Frontend
+- ***React*** - For building UI.
+- ***TailwindCSS*** - For styling
 
-- Configure the top-level `parserOptions` property like this:
+### Programming Language
+- ***TypeScript***
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### Others
+- ***React-toastify*** - for popup notifications.
+
+## Prerequisities
+Before starting, ensure you have the following installed:
+- **Node.js** (v14.x or higher)
+- **Git** (for version control)
+
+## Getting Started
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Santos2175/Dynamic-Form.git
+
+2. In the current directory where there is package.json, write following code for installing dependencies
+   ```bash
+   npm install
+
+### Running the project
+In the current root folder
+```bash
+npm run dev
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## Contact
+For any questions or feedback:
+- **Santosh Gurung** - [santoshgurung2175@gmail.com](mailto:santoshgurung2175@gmail.com)
