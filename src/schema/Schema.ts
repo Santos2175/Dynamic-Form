@@ -2,6 +2,7 @@ export interface Field {
   label: string;
   name: string;
   type: string;
+  multiple?: boolean;
   options?: string[];
 }
 
@@ -16,13 +17,18 @@ export const formSchema: Schema = {
     { label: 'Email', name: 'email', type: 'email' },
     { label: 'Contact No.', name: 'contact', type: 'tel' },
     { label: 'Enter Date', name: 'date', type: 'date' },
-    { label: 'Upload File', name: 'file', type: 'file' },
+    { label: 'Upload File', name: 'file', type: 'file', multiple: true },
 
     {
       label: 'Gender',
       name: 'gender',
       type: 'select',
       options: ['male', 'female', 'other'],
+    },
+    {
+      label: 'I agree to the terms and conditions',
+      name: 'terms',
+      type: 'checkbox',
     },
   ],
 };

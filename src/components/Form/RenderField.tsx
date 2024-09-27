@@ -5,7 +5,7 @@ import { Field } from '../../schema/Schema.ts';
 //interface definition
 interface RenderFieldProps {
   field: Field;
-  formData: { [key: string]: string };
+  formData: { [key: string]: string | boolean };
   handleChange: (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => void;
@@ -29,7 +29,7 @@ export const RenderField = ({
           <input
             type={field.type}
             name={field.name}
-            value={formData[field.name]}
+            value={formData[field.name] as string}
             onChange={handleChange}
             className='border border-gray-300 px-3 py-2 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-300'
             required
@@ -45,7 +45,7 @@ export const RenderField = ({
           <input
             type={field.type}
             name={field.name}
-            value={formData[field.name]}
+            value={formData[field.name] as string}
             onChange={handleChange}
             className='border border-gray-300 px-3 py-2 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-300'
             required
@@ -61,12 +61,14 @@ export const RenderField = ({
           <input
             type={field.type}
             name={field.name}
+            multiple={field.multiple}
             onChange={handleChange}
             className='border border-gray-300 px-3 py-2 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-300'
             required
           />
         </div>
       );
+
     case 'select':
       return (
         <div key={field.name} className='mb-4'>
@@ -75,7 +77,7 @@ export const RenderField = ({
           </label>
           <select
             name={field.name}
-            value={formData[field.name]}
+            value={formData[field.name] as string}
             onChange={handleChange}
             className='border border-gray-300 px-3 py-2 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-300'
             required>
@@ -86,6 +88,21 @@ export const RenderField = ({
               </option>
             ))}
           </select>
+        </div>
+      );
+    case 'checkbox':
+      return (
+        <div key={field.name} className='mb-4 flex items-center'>
+          <input
+            type='checkbox'
+            name={field.name}
+            checked={!!formData[field.name]}
+            onChange={handleChange}
+            className='mr-2'
+          />
+          <label className='text-gray-500 text-sm font-bold tracking-wide'>
+            {field.label}
+          </label>
         </div>
       );
     default:

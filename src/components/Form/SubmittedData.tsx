@@ -18,13 +18,6 @@ const SubmittedData = () => {
         Back
       </button>
       <h1 className='text-xl font-bold'>Submitted Data</h1>
-      {/* <ul>
-        {Object.entries(formData).map(([key, value]) => (
-          <li key={key} className='py-1'>
-            <strong>{key}: </strong> {value}
-          </li>
-        ))}
-      </ul> */}
 
       {/* in json format */}
       <pre className='bg-gray-100 p-4 rounded border'>

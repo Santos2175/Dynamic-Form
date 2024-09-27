@@ -10,16 +10,29 @@ const DynamicForm = ({ schema }: { schema: Schema }) => {
 
   //Initialization
   const initailFormData = schema.fields.reduce((acc, field) => {
-    acc[field.name] = '';
+    acc[field.name] = field.type === 'checkbox' ? false : '';
     return acc;
-  }, {} as { [key: string]: string });
+  }, {} as { [key: string]: string | boolean });
   const [formData, setFormData] = useState(initailFormData);
 
+  // Handle change function for inputs
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    const { name, type, value } = e.target;
+
+    if (type === 'checkbox') {
+      const checked = (e.target as HTMLInputElement).checked; // Type assertion to HTMLInputElement
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: checked, // Update the field to true/false based on checkbox state
+      }));
+    } else {
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: value,
+      }));
+    }
   };
 
   //handles the submitting of form
@@ -49,18 +62,6 @@ const DynamicForm = ({ schema }: { schema: Schema }) => {
   return (
     <div className='flex justify-center items-center min-h-screen'>
       <div className='bg-gray-200 shadow-md rounded-lg px-8 pt-6 pb-8 mb-4 max-w-lg w-full'>
-        <div className='text-center mb-6'>
-          <h2 className='text-xl font-semibold text-blue-600'>
-            🎉 Tired of Building Forms from Scratch? 🎉
-          </h2>
-          <p className='text-gray-500 font-semibold mt-2 tracking-normal leading-normal font-mono'>
-            Say goodbye to the hassle of coding forms for every little thing!
-            With just a tweak to the{' '}
-            <span className='text-blue-500 font-semibold'>schema</span>, you can
-            whip up a dynamic form that handles any input you throw at it! It’s
-            like having a magic wand 🪄 for forms!
-          </p>
-        </div>
         <h1 className='text-2xl text-center font-bold mb-4 text-slate-500'>
           Dynamic Form
         </h1>
